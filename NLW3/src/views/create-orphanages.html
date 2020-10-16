@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lar das Meninas</title>
+    <!-- leafletjs -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" /><!-- leafletjs -->
+
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <script src="./public/scripts/page-create-orphanage.js" defer="true"></script>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./public/images/logo-icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./public/css/main.css">
+    <link rel="stylesheet" href="./public/css/animations.css">
+    <link rel="stylesheet" href="./public/css/sidebar.css">
+    <link rel="stylesheet" href="./public/css/map.css">
+    <link rel="stylesheet" href="./public/css/forms.css">
+    <link rel="stylesheet" href="./public/css/button.css">
+    <link rel="stylesheet" href="./public/css/page-create-orphanage.css">
+
+</head>
+<body>
+    <div id="page-create-orphanage">
+        <aside class="animate-right sidebar">
+           <img src="./public/images/map-marker.svg" alt="Happy">
+           <footer>
+               <button onclick="history.back()">
+                   <img src="./public/images/arrow-back.svg" alt="voltar">
+               </button>
+           </footer>
+        </aside>
+        <main class="animate-appear  with-sidebar">
+
+            <form action="">
+                <fieldset>
+                    <legend>Dados</legend>
+                   <div class="map-container">
+                       <div id="mapid"></div>
+                      <input name="lat" type="hidden" >
+                      <input name="lng" type="hidden" >
+                       <footer>
+                           <a href="" id="select-point">clique no mapa adicionar a localizaçao</a>
+                       </footer>
+                   </div>
+                    <div class="input-block">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" name="name">
+                    </div>
+                    <div class="input-block">
+                        <label for="about">Sobre <span>maximo de 300 caracteres</span></label>
+                        <textarea name="about" id="about"></textarea>
+                    </div>
+                    <div class="input-block">
+                        <label for="whatsapp">Numero do Whatsapp</label>
+                        <input type="text" id="whatsapp" name="whatsapp">
+                    </div>
+                    <div class="input-block images">
+                        <label for="foto">Foto</label>
+                       <div class="images-upload" id="images">
+                            <div class="new-upload">
+                                <input name="images" placeholder="cole o link da foto aqui">
+                                <span onclick="deleteField(event)"><img src="./public/images/xcircle.svg" alt="image-close"></span>
+                            </div>
+                       </div>
+                       <button type="button" onclick="addFotos()">
+                           <img src="./public/images/add-file.svg" alt="nova imagem">
+                       </button>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Visitaçao</legend>
+                    <div class="input-block">
+                        <label for="instructions">instruçoes</label>
+                        <textarea name="instructions" id="instructions"></textarea>
+                    </div>
+                    <div class="input-block">
+                        <label for="opening_hours">horario das visitas</label>
+                        <input id="opening_hours" name="opening_hours">
+                    </div>
+                    <div class="input-block">
+                        <label for="open_on_weekends">atende fim de semana?</label>
+                        <input  type="hidden"  id="opening_on_weekends" name="open_on_weekends" value="1">
+                        <div class="button-select">
+                            <button  data-value="1" onclick="toggleSelect(event)"  type="button" class="active">sim</button>
+                            <button  data-value="0" onclick="toggleSelect(event)"  type="button">não</button>
+                        </div>
+                        <button type="submit" class="primary-button">confirmar</button>
+                    </div>
+                </fieldset>
+            </form>
+            
+        </main>
+    </div>
+</body>
+</html>

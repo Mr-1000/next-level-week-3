@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    font-size: 62.5%;
+    outline: 1px solid #cecece;
+}
+
+body{
+    height: 100vh;
+    color: white;
+    background: #ebf2f5;
+}
+
+body, input, button, textarea{
+    font-size: 1.13em;
+    line-height: 1;
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+}
+
+

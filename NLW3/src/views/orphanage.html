@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lar das Meninas</title>
+    <!-- leafletjs -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" /><!-- leafletjs -->
+
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <script src="./public/scripts/orphanage.js" defer="true"></script>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./public/images/logo-icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./public/css/main.css">
+    <link rel="stylesheet" href="./public/css/animations.css">
+    <link rel="stylesheet" href="./public/css/sidebar.css">
+    <link rel="stylesheet" href="./public/css/map.css">
+    <link rel="stylesheet" href="./public/css/button.css">
+    <link rel="stylesheet" href="./public/css/page-orphanage.css">
+
+</head>
+
+<body>
+    <div id="page-orphanage">
+        <aside class="animate-right sidebar">
+           <img src="./public/images/map-marker.svg" alt="Happy">
+
+           <footer>
+               <button onclick="history.back()">
+                   <img src="./public/images/arrow-back.svg" alt="voltar">
+               </button>
+           </footer>
+        </aside>
+
+        <main class="animate-appear  with-sidebar">
+            <div class="orphanage-details">
+
+                <img src="./public/images/home.jpg" alt="">
+
+                <div class="images">
+                    <button onclick="selectImage(event)" class="active" type="button">
+                        <img src="https://source.unsplash.com/random?id=1" alt="lar das meninas">
+                    </button>
+    
+                    <button onclick="selectImage(event)"type="button">
+                        <img src="https://source.unsplash.com/random?id=2" alt="lar das meninas">
+                    </button>
+    
+                    <button onclick="selectImage(event)" type="button">
+                        <img src="https://source.unsplash.com/random?id=3" alt="lar das meninas">
+                    </button>
+    
+                    <button onclick="selectImage(event)"type="button">
+                        <img src="https://source.unsplash.com/random?id=4" alt="lar das meninas">
+                    </button>
+    
+                    <button onclick="selectImage(event)"type="button">
+                        <img src="https://source.unsplash.com/random?id=5" alt="lar das meninas">
+                    </button>
+
+                    <button onclick="selectImage(event)"type="button">
+                        <img src="https://source.unsplash.com/random?id=6" alt="lar das meninas">
+                    </button>
+                </div>
+    
+                <div class="orphanege-details-content">
+                    <h1>lar das meninas</h1>
+                    <p>presta assistencia a crianças de 6 a 15 anos que se encontre em situaçao de risco e vulnerabilidade
+                        social
+                    </p>
+
+                    <div class="map-container">
+                        <div id="mapid"></div>
+                        <footer>
+                            <a href="">ver rotas no google maps</a>
+                        </footer>
+                    </div>
+        
+                    <hr /><!-- divisao de template -->
+
+                    <h2>instruçoes para visitas</h2>
+                    <p>venha se sentir a vontade e traga muito amor e paciencia para dar</p>
+        
+                    <div class="open-details">
+                        <div class="hour">
+                            <img src="./public/images/clock.svg" alt="horarios">
+                            horarios de visitas das 18hs às 8hs
+                        </div>
+                        <div class="open-on-weekends">
+                            <img src="./public/images/info.svg" alt="informaçoes">
+                            atendemos fim de semana
+                        </div>
+                    </div>
+        
+                    <button type="button" class="primary-button">
+                      <img src="./public/images/whatsapp.svg" alt="chamar no whatsapp">
+                      entrar em contato
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
