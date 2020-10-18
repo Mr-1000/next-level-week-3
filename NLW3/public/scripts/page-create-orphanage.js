@@ -1,22 +1,16 @@
 //create map
-const map = L.map('mapid').setView([-22.7740765,-43.3719377], 15)
+const map = L.map('mapid').setView([-22.7740765, -43.3719377], 15)
 
 // create and add tilelayer
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map)
 
-
 //create icon
-
 const icon = L.icon({
-    iconUrl: "./public/images/map-marker.svg",
+    iconUrl: "/images/map-marker.svg",
     iconSize:[58, 68],
     iconAnchor:[29, 68]
 })
-
-
-
 //criar e adicionar maker
-
 let marker;
 
 map.on('click', (event) =>{
@@ -32,9 +26,7 @@ map.on('click', (event) =>{
   marker = L.marker([lat, lng], { icon })
   .addTo(map)
 })
-
 // select fotos
-
 function addFotos(){
     // pegar o container de fotos
     const container = document.querySelector('#images')

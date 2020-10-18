@@ -12,8 +12,8 @@
     width: min(90%, 112rem);
 }
    
-.location, h1, .visit .animate-up{
-   height: 16vh;
+.location, h1, .visit p{
+   height: 8vh;
   
 }
 
