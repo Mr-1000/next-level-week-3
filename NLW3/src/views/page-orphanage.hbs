@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>orphanage | happy</title>
+    <title>{{orphanage.name}}| happy</title>
     <!-- leafletjs -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -31,79 +31,65 @@
 <body>
     <div id="page-orphanage">
         <aside class="animate-right sidebar">
-           <img src="/images/map-marker.svg" alt="Happy">
+            <img src="/images/map-marker.svg" alt="Happy">
 
-           <footer>
-               <button onclick="history.back()">
-                   <img src="/images/arrow-back.svg" alt="voltar">
-               </button>
-           </footer>
+            <footer>
+                <button onclick="history.back()">
+                    <img src="/images/arrow-back.svg" alt="voltar">
+                </button>
+            </footer>
         </aside>
 
         <main class="animate-appear  with-sidebar">
             <div class="orphanage-details">
-
-                <img src="/images/home.jpg" alt="">
-
+                <img src="{{orphanage.firstImage}}" alt="{{orphanage.name}}">
                 <div class="images">
+                    {{#each orphanage.images}}
                     <button onclick="selectImage(event)" class="active" type="button">
-                        <img src="https://source.unsplash.com/random?id=1" alt="lar das meninas">
+                        <img src="{{this}}" alt="{{orphanage.name}}">
                     </button>
-    
-                    <button onclick="selectImage(event)"type="button">
-                        <img src="https://source.unsplash.com/random?id=2" alt="lar das meninas">
-                    </button>
-    
-                    <button onclick="selectImage(event)" type="button">
-                        <img src="https://source.unsplash.com/random?id=3" alt="lar das meninas">
-                    </button>
-    
-                    <button onclick="selectImage(event)"type="button">
-                        <img src="https://source.unsplash.com/random?id=4" alt="lar das meninas">
-                    </button>
-    
-                    <button onclick="selectImage(event)"type="button">
-                        <img src="https://source.unsplash.com/random?id=5" alt="lar das meninas">
-                    </button>
-
-                    <button onclick="selectImage(event)"type="button">
-                        <img src="https://source.unsplash.com/random?id=6" alt="lar das meninas">
-                    </button>
+                    {{/each}}
                 </div>
-    
                 <div class="orphanege-details-content">
-                    <h1>lar das meninas</h1>
-                    <p>presta assistencia a crianças de 6 a 15 anos que se encontre em situaçao de risco e vulnerabilidade
-                        social
-                    </p>
+                    <h1>{{orphanage.name}}</h1>
+                    <p>{{orphanage.abaut}}</p>
 
                     <div class="map-container">
                         <div id="mapid"></div>
+                        <span data-lat="{{orphanage.lat}}" data-lng="{{orphanage.lng}}"></span>
                         <footer>
-                            <a href="">ver rotas no google maps</a>
+                            <a href="https://maps.google.com/mobile?q={{orphanage.lat}},{{orphanage.lng}}&zoom=15"
+                                target="_blank">ver rotas no google maps</a>
                         </footer>
                     </div>
-        
+
                     <hr /><!-- divisao de template -->
 
                     <h2>instruçoes para visitas</h2>
-                    <p>venha se sentir a vontade e traga muito amor e paciencia para dar</p>
-        
+                    <p>{{orphanage.instructions}}</p>
+
                     <div class="open-details">
                         <div class="hour">
                             <img src="/images/clock.svg" alt="horarios">
-                            horarios de visitas das 18hs às 8hs
+                            {{orphanage.opening-hours}}
                         </div>
-                        <div class="open-on-weekends">
+                        {{#if orphanage.open-on-weekends}}
+                        <div class="open-on-weekends open">
                             <img src="/images/info.svg" alt="informaçoes">
-                            atendemos fim de semana
+                            Atendemos fim de semana
                         </div>
+                        {{else}}
+                        <div class="open-on-weekends close">
+                            <img src="/images/info-red.svg" alt="informaçoes">
+                            Nao atendemos fim de semana
+                        </div>
+                        {{/if}}
                     </div>
-        
-                    <button type="button" class="primary-button">
-                      <img src="/images/whatsapp.svg" alt="chamar no whatsapp">
-                      entrar em contato
-                    </button>
+                    <a href="https://api.whatsapp.com/send?l=pt_BR&phone={{orphanage.whatsapp}}&text=oi, quero conversar sobre visitas" type="button"
+                        class="primary-button" target="_blank">
+                        <img src="/images/whatsapp.svg" alt="chamar no whatsapp">
+                        entrar em contato
+                    </a>
                 </div>
             </div>
         </main>

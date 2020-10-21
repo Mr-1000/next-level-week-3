@@ -1,4 +1,8 @@
 
+ const Lat = document.querySelector('span[data-lat]').dataset.lat
+ const Lng = document.querySelector('span[data-lng]').dataset.lng
+
+
 const options = {
     dragging: false,
     touchZoom: false,
@@ -8,7 +12,7 @@ const options = {
 }
 
 //create map
-const map = L.map('mapid', options).setView([-22.7740765, -43.3719377], 15)
+const map = L.map('mapid', options).setView([Lat, Lng], 15)
 
 // create and add tilelayer
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map)
@@ -21,8 +25,9 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map)
         popupAnchor:[170, 2]
     })
 
+   
     //create icon
-    L.marker([-22.7740765, -43.3719377], {icon})
+    L.marker([Lat, Lng], {icon})
     .addTo(map)
 
 

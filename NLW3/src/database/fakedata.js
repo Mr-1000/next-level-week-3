@@ -14,12 +14,10 @@ module.exports = [
         open_on_weekends: "1"
 
     },
-
-
     {
         id: 2,
-        lat: "-22.7740765",
-        lng: "-43.3819377",
+        lat: "-22.9940765",
+        lng: "-43.3319377",
         name: "lar das meninos",
         description: "presta assistencia a crianças de 6 a 15 anos que se encontre em situaçao de risco e vulnerabilidade social",
         images: [

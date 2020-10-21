@@ -1,17 +1,89 @@
-const orphanages = require('./database/fakedata.js')
 
+// chamando o banco de dados nas views
+const Database = require('./database/db')
+const saveOrphanage = require('./database/saveOrphanage')
+
+//renderiza as paginas
 module.exports = {
 
     index(req, res) {
         return res.render('index')
     },
-    orphanage(req, res) {
-        return res.render('page-orphanage')
+
+    async orphanage(req, res) {
+        
+        const id = req.query.id
+
+        try {
+            const db = await Database;
+         //colocar o orfanages pelo banco
+         const results = await db.all(`SELECT * FROM orphanages WHERE id = "${id}"`)
+         const orphanage = results[0];
+
+          orphanage.images = orphanage.images.split(',')
+          orphanage.firstImage = orphanage.images[0]
+
+          if (orphanage.open_on_weekends == "0") {
+            orphanage.open_on_weekends = false;
+          }else{
+            orphanage.open_on_weekends = true;
+          }
+
+         return res.render('page-orphanage', { orphanage })
+        } catch (error) {
+            console.log(error)
+            return res.send('erro no banco de dados')
+        }
     },
-    orphanages(req, res) {
+
+   async orphanages(req, res) {
+       try {
+           const db = await Database;
+        //colocar o orfanages pelo banco
+        const orphanages = await db.all("SELECT * FROM orphanages")
         return res.render('page-orphanages', { orphanages })
+       } catch (error) {
+           console.log(error)
+           return res.send('erro no banco de dados')
+       }
     },
+    
     createOrphanage(req, res) {
         return res.render('create-orphanages')
+    },
+
+    async saveOrphanage(req, res){
+        const fields = req.body;
+
+        //validar se campos preenchidos
+        if (Object.values(fields).includes(" ")) {
+            return res.send("todos os campos devem ser preenchidos")
+        }
+
+        try {
+
+             //saslvar um orfanato
+            const db = await Database;
+            await saveOrphanage(db, {
+                lat: fields.lat,
+                lng: fields.lng,
+                name: fields.name,
+                about: fields.about,
+                whatsapp: fields.whatsapp,
+                images: fields.images.toString(),
+                instructions: fields.instructions,
+                opening_hours: fields.opening_hours,
+                open_on_weekends: fields.open_on_weekends
+            })
+
+            //redirecionamento
+            return res.redirect('./orphanages')
+
+        } catch (error) {
+            console.log(error)
+            return res.send("erro no banco de dados")
+        }
+
+       
     }
 }
